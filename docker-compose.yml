@@ -27,17 +27,18 @@ services:
       HASURA_GRAPHQL_DEV_MODE: "true"
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+   
       
-  flyway:
-    image: flyway/flyway
-    command: -connectRetries=3 migrate
-    volumes:
-      - ./flyway/sql:/flyway/sql
-      - ./flyway/conf:/flyway/conf
-    depends_on:
-      - postgres
-    links:
-      - postgres
+  # flyway:
+  #   image: flyway/flyway
+  #   command: -connectRetries=3 migrate
+  #   volumes:
+  #     - ./flyway/sql:/flyway/sql
+  #     - ./flyway/conf:/flyway/conf
+  #   depends_on:
+  #     - postgres
+  #   links:
+  #     - postgres
 
 # volumes:
 #   db_data:
