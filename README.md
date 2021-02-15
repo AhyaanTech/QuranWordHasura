@@ -8,6 +8,8 @@ Docker installed with docker-compose cli as well
 
 ### Instructions
 
+Clone this repo
+
 Run the command in the directory where the `docker-compose.yml` file exists
 
 ```docker-compose up --build -d```
