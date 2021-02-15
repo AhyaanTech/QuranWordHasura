@@ -1,0 +1,49 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    ports:
+      - 5433:5432
+    # volumes:
+    # - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=jkalia
+      - POSTGRES_PASSWORD=Ahyaan
+      - POSTGRES_DB=QuranWordData
+  
+  graphql-engine:
+    image: hasura/graphql-engine:latest.cli-migrations-v2
+    ports:
+      - "9001:8080"
+    depends_on:
+      - "postgres"
+    restart: always
+    volumes: 
+      - ./qurandb/migrations:/hasura-migrations
+      - ./qurandb/metadata:/hasura-metadata
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://jkalia:Ahyaan@postgres:5432/QuranWordData
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+
+   
+## Sample flyway to get pgSql seed data if not using hasura engine   
+  # flyway:
+  #   image: flyway/flyway
+  #   command: -connectRetries=3 migrate
+  #   volumes:
+  #     - ./flyway/sql:/flyway/sql
+  #     - ./flyway/conf:/flyway/conf
+  #   depends_on:
+  #     - postgres
+  #   links:
+  #     - postgres
+
+## un-comment the following line to persist pgSql data
+# volumes:
+#   db_data:
