@@ -1,6 +1,0 @@
-version: 2
-endpoint: http://localhost:9001
-metadata_directory: metadata
-actions:
-  kind: synchronous
-  handler_webhook_baseurl: http://localhost:3000
