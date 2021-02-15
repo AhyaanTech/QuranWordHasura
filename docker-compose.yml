@@ -13,12 +13,15 @@ services:
       - POSTGRES_DB=QuranWordData
   
   graphql-engine:
-    image: hasura/graphql-engine
+    image: hasura/graphql-engine:latest.cli-migrations-v2
     ports:
       - "9001:8080"
     depends_on:
       - "postgres"
     restart: always
+    volumes: 
+      - ./qurandb/migrations:/hasura-migrations
+      - ./qurandb/metadata:/hasura-metadata
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgres://jkalia:Ahyaan@postgres:5432/QuranWordData
       ## enable the console served by server
@@ -27,8 +30,9 @@ services:
       HASURA_GRAPHQL_DEV_MODE: "true"
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+
    
-      
+## Sample flyway to get pgSql seed data if not using hasura engine   
   # flyway:
   #   image: flyway/flyway
   #   command: -connectRetries=3 migrate
@@ -40,5 +44,6 @@ services:
   #   links:
   #     - postgres
 
+## un-comment the following line to persist pgSql data
 # volumes:
 #   db_data:
