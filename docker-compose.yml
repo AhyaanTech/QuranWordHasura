@@ -8,8 +8,8 @@ services:
     # volumes:
     # - db_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=jkalia
-      - POSTGRES_PASSWORD=Ahyaan
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
       - POSTGRES_DB=QuranWordData
   
   graphql-engine:
