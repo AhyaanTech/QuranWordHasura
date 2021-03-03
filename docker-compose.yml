@@ -23,7 +23,7 @@ services:
       - ./qurandb/migrations:/hasura-migrations
       - ./qurandb/metadata:/hasura-metadata
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://jkalia:Ahyaan@postgres:5432/QuranWordData
+      HASURA_GRAPHQL_DATABASE_URL: postgres://user:password@postgres:5432/QuranWordData
       ## enable the console served by server
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
       ## enable debugging mode. It is recommended to disable this in production
