@@ -13,6 +13,7 @@ name = "quran-letter-parser"
 version = "0.1.0"
 dependencies = [
  "serde_json",
+ "unicode-segmentation",
 ]
 
 [[package]]
@@ -37,3 +38,9 @@ dependencies = [
  "ryu",
  "serde",
 ]
+
+[[package]]
+name = "unicode-segmentation"
+version = "1.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0fdbf052a0783de01e944a6ce7a8cb939e295b1e7be835a1112c3b9a7f047a5a"

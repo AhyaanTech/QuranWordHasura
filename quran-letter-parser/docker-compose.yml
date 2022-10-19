@@ -1,0 +1,9 @@
+version: '3'
+services:
+  postgres:
+    image: quran/quran.com-database:d7480fa
+    environment:
+      - POSTGRES_DB=quran_db
+      - POSTGRES_USER=quran_dev
+      - POSTGRES_PASSWORD=quran_password # to create db
+      - PGPASSWORD=quran_password # to pg_restore dump
